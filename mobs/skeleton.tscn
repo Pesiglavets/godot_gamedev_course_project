@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cicne8hfowvrd"]
+[gd_scene load_steps=25 format=3 uid="uid://cicne8hfowvrd"]
 
 [ext_resource type="Script" path="res://mobs/skeleton.gd" id="1_m0x5m"]
 [ext_resource type="Texture2D" uid="uid://66stp37n82f8" path="res://Skeleton/Take Hit.png" id="1_w5bk8"]
@@ -132,6 +132,9 @@ radius = 192.26
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxtwl"]
 size = Vector2(6.75, 3.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rote7"]
+size = Vector2(16, 3.25)
+
 [node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_m0x5m")
 
@@ -158,6 +161,13 @@ shape = SubResource("CircleShape2D_8pb2n")
 position = Vector2(0, -10.625)
 shape = SubResource("RectangleShape2D_jxtwl")
 
+[node name="Death2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death2"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rote7")
+
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
 [connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="Death2" to="." method="_on_death_2_body_entered"]

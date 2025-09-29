@@ -44,6 +44,12 @@ func _on_death_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.velocity.y -= 200
 		death()
+
+func _on_death_2_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		if alive == true:
+			body.health -= 40
+		death()
 	
 func death():
 	alive = false
